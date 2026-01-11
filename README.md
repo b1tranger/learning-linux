@@ -1,4 +1,4 @@
-> related repo [Programming-Records](https://github.com/b1tranger/Programming-Records/) ,[learning-cpp-extended](https://github.com/b1tranger/learning-cpp-extended/)
+> related repo [Programming-Records](https://github.com/b1tranger/Programming-Records/) , [learning-cpp-extended](https://github.com/b1tranger/learning-cpp-extended/)
 # learning-linux
 
 ### # purpose
