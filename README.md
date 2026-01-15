@@ -3,6 +3,8 @@
 
 ### # purpose
 - to reach "Arch by the way" status one day
+- Linux CLI
+- Termux for Android
 
 ### # resources
 - https://roadmap.sh/linux | [ai-linux-roadmap.md](https://github.com/b1tranger/learning-linux/blob/main/Linux/ai-linux-roadmap.md)
