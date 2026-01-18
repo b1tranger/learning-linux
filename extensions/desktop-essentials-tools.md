@@ -9,3 +9,20 @@ GitKraken and GitHub Desktop function as graphical user interfaces (GUIs) for Gi
   sudo apt install cloudflare-warp
   ```
   If you get an error message when trying to install via the terminal, download the package that suits your distro from the [package repository ↗](https://pkg.cloudflareclient.com/)
+  <pre><font color="#C01C28"><b>E: </b></font>Unable to locate package cloudflare-warp
+  </pre>  
+  <br>To connect for the very first time:
+
+    Register the client
+  ```
+  warp-cli registration new.
+  ```
+    Connect
+  ```
+  warp-cli connect.
+  ```
+    Run
+  ```
+  curl https://www.cloudflare.com/cdn-cgi/trace/ and verify that warp=on.
+  ```
+
