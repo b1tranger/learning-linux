@@ -35,3 +35,24 @@
    1.     org.gnome.Platform               49     i  flathub &lt; 404.8 MB
    2.     com.mattjakeman.ExtensionManager stable i  flathub   &lt; 1.4 MB
   </pre>
+  after I enabled CloudFare Warp
+  <pre><b>com.mattjakeman.ExtensionManager</b> permissions:
+    ipc      network      fallback-x11         wayland
+    x11      dri          dbus access [1]
+
+    [1] org.gnome.SessionManager, org.gnome.Shell.Extensions
+
+  
+  <b>        ID                                            Branch      Op Remote  Download</b>
+   1.     com.mattjakeman.ExtensionManager.Locale       stable      i  flathub &lt; 174.4 kB (partial)
+   2.     org.freedesktop.Platform.GL.default           25.08       i  flathub &lt; 140.1 MB
+   3.     org.freedesktop.Platform.GL.default           25.08-extra i  flathub &lt; 140.1 MB
+   4.     org.freedesktop.Platform.GL.nvidia-535-274-02 1.4         i  flathub &lt; 293.2 MB
+   5.     org.freedesktop.Platform.VAAPI.nvidia         25.08       i  flathub  &lt; 44.5 kB
+   6.     org.freedesktop.Platform.codecs-extra         25.08-extra i  flathub  &lt; 14.4 MB
+   7.     org.gnome.Platform.Locale                     49          i  flathub &lt; 385.3 MB (partial)
+   8.     org.gtk.Gtk3theme.Yaru-dark                   3.22        i  flathub &lt; 196.5 kB
+   9.     org.gnome.Platform                            49          i  flathub &lt; 404.8 MB
+  10.     com.mattjakeman.ExtensionManager              stable      i  flathub   &lt; 1.4 MB
+  
+  Proceed with these changes to the system installation?</pre>
