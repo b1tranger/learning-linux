@@ -11,6 +11,20 @@ GitKraken and GitHub Desktop function as graphical user interfaces (GUIs) for Gi
   If you get an error message when trying to install via the terminal, download the package that suits your distro from the [package repository ↗](https://pkg.cloudflareclient.com/)
   <pre><font color="#C01C28"><b>E: </b></font>Unable to locate package cloudflare-warp
   </pre>  
+
+   Add cloudflare gpg key
+  ```
+  curl -fsSL https://pkg.cloudflareclient.com/pubkey.gpg | sudo gpg --yes --dearmor --output /usr/share/keyrings/cloudflare-warp-archive-keyring.gpg
+  ```
+  Add this repo to your apt repositories
+  ```
+  echo "deb [signed-by=/usr/share/keyrings/cloudflare-warp-archive-keyring.gpg] https://pkg.cloudflareclient.com/ $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/cloudflare-client.list
+  ```
+  Install
+  ```
+  sudo apt-get update && sudo apt-get install cloudflare-warp
+  ```
+
   <br>To connect for the very first time:
 
     Register the client
@@ -26,3 +40,5 @@ GitKraken and GitHub Desktop function as graphical user interfaces (GUIs) for Gi
   curl https://www.cloudflare.com/cdn-cgi/trace/ and verify that warp=on.
   ```
 
+### # source
+- https://pkg.cloudflareclient.com/
