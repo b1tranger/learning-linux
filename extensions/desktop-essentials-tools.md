@@ -29,15 +29,15 @@ GitKraken and GitHub Desktop function as graphical user interfaces (GUIs) for Gi
 
     Register the client
   ```
-  warp-cli registration new.
+  warp-cli registration new
   ```
     Connect
   ```
-  warp-cli connect.
+  warp-cli connect
   ```
     Run
   ```
-  curl https://www.cloudflare.com/cdn-cgi/trace/ and verify that warp=on.
+  curl https://www.cloudflare.com/cdn-cgi/trace/ and verify that warp=on
   ```
 
 ### # source
