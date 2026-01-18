@@ -6,6 +6,11 @@
 - Linux CLI
 - Termux for Android
 
+### # installation and spec
+- installed [Ubuntu 24.04.3 LTS](https://ubuntu.com/download/desktop) using [Rufus](https://rufus.ie/en/)
+- allocated 50GB of my 256GB (~230GB) for Linux partition. And 16GB+4GB+30GB as /, /tmp, /home
+
+
 ### # resources
 - https://roadmap.sh/linux | [ai-linux-roadmap.md](https://github.com/b1tranger/learning-linux/blob/main/Linux/ai-linux-roadmap.md)
 - https://labex.io/
