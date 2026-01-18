@@ -1,0 +1,1 @@
+- https://extensions.gnome.org/extension/779/clipboard-indicator/ | The most popular clipboard manager for GNOME, with over 2M downloads. Check the Github page for a full list of features. | [Extension Homepage](https://github.com/Tudmotu/gnome-shell-extension-clipboard-indicator )
