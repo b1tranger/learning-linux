@@ -23,7 +23,8 @@
 - see PDFs: [repo/folder](https://github.com/b1tranger/learning-linux/tree/main/PDF)
 
 
-### # guide/suggestion by people: [repo/.md](https://github.com/b1tranger/learning-linux/blob/main/queries/guide-suggestions.md)
+### # guide/suggestion by people: 
+see index: [repo/.md](https://github.com/b1tranger/learning-linux/blob/main/queries/guide-suggestions.md)
 - [tatatin](https://github.com/Tatatin1551)
 - [bdeshi](https://github.com/bdeshi)
 - [prottoy](https://github.com/cristal-node)
