@@ -8,7 +8,7 @@
   <img width="600" height="862" alt="image" src="https://github.com/user-attachments/assets/3e71d126-fb2d-4250-9b34-1a388fbc7437" /><br>
   should I allocate all 50GB without mount partitions?<br>
   - fix for storage limit
-  > Google AI Mode:
+  > Google AI Mode: [link](https://share.google/aimode/KUmHoACt9JphMK21g)
 
   First, determine which partition is full using the df (disk free) command in a human-readable format:
   ```
@@ -48,3 +48,8 @@
   ```
   Replace /home/youruser with the specific path you are investigating. Carefully review the output before using rm to delete any files.
   <br>After freeing up space, try running your operation again.
+
+
+### # source:
+- https://share.google/aimode/KUmHoACt9JphMK21g
+
