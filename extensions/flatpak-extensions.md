@@ -18,3 +18,8 @@
    3.     org.gnome.Platform                      49     i  flathub &lt; 404.8 MB
    4.     com.mattjakeman.ExtensionManager        stable i  flathub   &lt; 1.4 MB
   </pre>
+  <pre>
+  Error: While pulling runtime/org.gnome.Platform/x86_64/49 from remote flathub: While fetching https://dl.flathub.org/repo/deltas/m4/x7bKBn1vHr9k0BJd36s0doVEnWhelzQYV8EdXmQjw/8: [28] Timeout was reached
+  <font color="#C01C28">
+  <b>error: </b></font>Failed to install <b>org.gnome.Platform</b>: While pulling runtime/org.gnome.Platform/x86_64/49 from remote flathub: While fetching https://dl.flathub.org/repo/deltas/m4/x7bKBn1vHr9k0BJd36s0doVEnWhelzQYV8EdXmQjw/8: [28] Timeout was reached
+  </pre>
