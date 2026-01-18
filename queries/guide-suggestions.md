@@ -3,8 +3,8 @@
 - [using LVM for flexibility](https://github.com/b1tranger/learning-linux/blob/main/Linux/Day%201/Conclusions_D1.md)
 
 [foxxie](https://github.com/foxxie911)
-- [running software from HDD (NFTS)](https://github.com/b1tranger/learning-linux/edit/main/Linux/Day%201/Conclusions_D1.md)
-- [installation partition preference](https://github.com/b1tranger/learning-linux/main/queries/issues.md)
+- [running software from HDD (NFTS)](https://github.com/b1tranger/learning-linux/blob/main/Linux/Day%201/Conclusions_D1.md)
+- [installation partition preference](https://github.com/b1tranger/learning-linux/blob/main/queries/issues.md)
 
 [bdeshi](https://github.com/bdeshi)
 - [path issues](https://github.com/b1tranger/learning-linux/blob/main/Linux/Day%201/Conclusions_D1.md)
