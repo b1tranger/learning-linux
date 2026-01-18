@@ -1,5 +1,5 @@
 ### # suggestions:
-- [Tatatin](https://github.com/Tatatin1551): "Linux has storage issues, sometimes it could lock you out from using your total capacity. Check before resorting to big-changes, if you are facing issues installing smaller applications."
+- [Tatatin](https://github.com/Tatatin1551): ~"Linux has storage issues, sometimes it could lock you out from using your total capacity. Check before resorting to big-changes, if you are facing issues installing smaller applications."
 -  Prottoy: "you dont want to make partitions? you need at least 2 partition in efi mode, boot and the root distro er depend kore, but 30gigs er moto rakhi ami always. of course amr needs er sathe match kore jonne."
 - foxxie: <br>"tumi to manually kortaso, automatic koro nai keno? swap is optional, there should be an option for it to enable. there is no need for /tmp. it just stores temporary files that Linux creates. there are only two necessary mount points
 <br>1. /boot
