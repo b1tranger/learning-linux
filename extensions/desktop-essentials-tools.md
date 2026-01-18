@@ -24,6 +24,9 @@ GitKraken and GitHub Desktop function as graphical user interfaces (GUIs) for Gi
   ```
   sudo apt-get update && sudo apt-get install cloudflare-warp
   ```
+  ```
+  warp-cli --help
+  ```
 
   <br>To connect for the very first time:
 
@@ -31,6 +34,7 @@ GitKraken and GitHub Desktop function as graphical user interfaces (GUIs) for Gi
   ```
   warp-cli registration new
   ```
+  <pre>Accept Terms of Service and Privacy Policy?</pre>
     Connect
   ```
   warp-cli connect
@@ -39,6 +43,28 @@ GitKraken and GitHub Desktop function as graphical user interfaces (GUIs) for Gi
   ```
   curl https://www.cloudflare.com/cdn-cgi/trace/ and verify that warp=on
   ```
+  <pre>hat warp=on
+  fl=411f52
+  h=www.cloudflare.com
+  ip= `//redacted`
+  ts= `//redacted`
+  visit_scheme=https
+  uag=curl/8.5.0
+  colo=SIN
+  sliver=none
+  http=http/2
+  loc= `//redacted`
+  tls= `//redacted`
+  sni=plaintext
+  warp=on
+  gateway=off
+  rbi=off
+  kex= `//redacted`
+  curl: (6) Could not resolve host: and
+  curl: (6) Could not resolve host: verify
+  curl: (6) Could not resolve host: that
+  curl: (3) URL rejected: Bad hostname
+  </pre>
 
 ### # source
 - https://pkg.cloudflareclient.com/
