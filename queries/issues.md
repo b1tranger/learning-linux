@@ -1,4 +1,9 @@
-- hit storage limit<br>
+### # suggestions:
+- [Tatatin](https://github.com/Tatatin1551): "Linux has storage issues, sometimes it could lock you out from using your total capacity. Check before resorting to big-changes, if you are facing issues installing smaller applications."
+
+---
+
+# # hit storage limit
   <pre>Error: Not enough disk space to complete this operation
   <font color="#C01C28"><b>error: </b></font>Failed to install <b>org.gnome.Platform</b>: While pulling runtime/org.gnome.Platform/x86_64/49 from remote flathub: Writing content object: min-free-space-size 500MB would be exceeded, at least 1.1 MB requested
   </pre>
