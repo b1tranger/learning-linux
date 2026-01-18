@@ -41,30 +41,26 @@ GitKraken and GitHub Desktop function as graphical user interfaces (GUIs) for Gi
   ```
     Run
   ```
-  curl https://www.cloudflare.com/cdn-cgi/trace/ and verify that warp=on
+  curl https://www.cloudflare.com/cdn-cgi/trace/
   ```
-  <pre>hat warp=on
-  fl=411f52
+  and verify that warp=on
+  <pre>fl=411f52
   h=www.cloudflare.com
-  ip= `//redacted`
-  ts= `//redacted`
+  ip= `[x]`
+  ts= `[x]`
   visit_scheme=https
   uag=curl/8.5.0
   colo=SIN
   sliver=none
   http=http/2
-  loc= `//redacted`
-  tls= `//redacted`
+  loc= `[x]`
+  tls= `[x]`
   sni=plaintext
   warp=on
   gateway=off
   rbi=off
-  kex= `//redacted`
-  curl: (6) Could not resolve host: and
-  curl: (6) Could not resolve host: verify
-  curl: (6) Could not resolve host: that
-  curl: (3) URL rejected: Bad hostname
-  </pre>
+  kex= `[x]`</pre>
+  
 
 ### # source
 - https://pkg.cloudflareclient.com/
