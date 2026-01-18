@@ -5,7 +5,11 @@ gnome-extensions list
 ---
 
 ### # manager
-- To control [GNOME Shell extensions](https://gnome.pages.gitlab.gnome.org/gnome-browser-integration/pages/installation-guide.html) using this site you must install GNOME Shell integration that consists of two parts: <br>browser extension and native host messaging application.
+- To control [GNOME Shell extensions](https://gnome.pages.gitlab.gnome.org/gnome-browser-integration/pages/installation-guide.html) using this site you must install GNOME Shell integration that consists of two parts: <br>browser extension and native host messaging application.<br>
+  (firefox addons not loading)
+  ```
+  sudo apt-get install gnome-browser-connector
+  ```
 
 
 ---
