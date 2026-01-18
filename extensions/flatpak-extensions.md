@@ -23,3 +23,15 @@
   <font color="#C01C28">
   <b>error: </b></font>Failed to install <b>org.gnome.Platform</b>: While pulling runtime/org.gnome.Platform/x86_64/49 from remote flathub: While fetching https://dl.flathub.org/repo/deltas/m4/x7bKBn1vHr9k0BJd36s0doVEnWhelzQYV8EdXmQjw/8: [28] Timeout was reached
   </pre>
+  The issue might be a temporary network glitch on your end or Flathub's end. Simply trying the command again often works [link-1](https://github.com/actions/runner-images/issues/2264)
+  <pre><b>com.mattjakeman.ExtensionManager</b> permissions:
+    ipc      network      fallback-x11         wayland
+    x11      dri          dbus access [1]
+
+    [1] org.gnome.SessionManager, org.gnome.Shell.Extensions
+  
+  
+  <b>        ID                               Branch Op Remote  Download</b>
+   1.     org.gnome.Platform               49     i  flathub &lt; 404.8 MB
+   2.     com.mattjakeman.ExtensionManager stable i  flathub   &lt; 1.4 MB
+  </pre>
