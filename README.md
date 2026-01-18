@@ -20,7 +20,13 @@
 - see the extensions I used: [repo/folder](https://github.com/b1tranger/learning-linux/tree/main/extensions)
 - see my queries: [repo/folder](https://github.com/b1tranger/learning-linux/tree/main/queries)
 - see PDFs: [repo/folder](https://github.com/b1tranger/learning-linux/tree/main/PDF)
-- see guide/suggestion by people: [repo/.md](https://github.com/b1tranger/learning-linux/blob/main/queries/guide-suggestions.md)
+
+
+### # guide/suggestion by people: [repo/.md](https://github.com/b1tranger/learning-linux/blob/main/queries/guide-suggestions.md)
+- [tatatin](https://github.com/Tatatin1551)
+- [bdeshi](https://github.com/bdeshi)
+- [prottoy](https://github.com/cristal-node)
+- [foxxie](https://github.com/foxxie911)
 
 
 ### # journal format:
