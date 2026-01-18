@@ -4,7 +4,7 @@ gnome-extensions list
 ```
 
 
-- https://extensions.gnome.org/extension/779/clipboard-indicator/ | The most popular clipboard manager for GNOME, with over 2M downloads. Check the Github page for a full list of features. | [Extension Homepage](https://github.com/Tudmotu/gnome-shell-extension-clipboard-indicator )
+- [clipboard-indicator](https://extensions.gnome.org/extension/779/clipboard-indicator/)| The most popular clipboard manager for GNOME, with over 2M downloads. Check the Github page for a full list of features. | [Extension Homepage](https://github.com/Tudmotu/gnome-shell-extension-clipboard-indicator ) | [ALT/flatpak](https://flathub.org/en/apps/com.github.hluk.copyq)
   - installation:<br>
   ```
   cd /home/saraf/Downloads/git_clones/extensions
