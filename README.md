@@ -18,7 +18,7 @@
 
 
 ### # journal format:
-
+see [journal](https://github.com/b1tranger/learning-linux/tree/main/Linuxl
 ```
 > using Ubuntu
 
