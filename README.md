@@ -20,6 +20,7 @@
 - see the extensions I used: [repo/folder](https://github.com/b1tranger/learning-linux/tree/main/extensions)
 - see my queries: [repo/folder](https://github.com/b1tranger/learning-linux/tree/main/queries)
 - see PDFs: [repo/folder](https://github.com/b1tranger/learning-linux/tree/main/PDF)
+- see guide/suggestion by people: [repo/.md](https://github.com/b1tranger/learning-linux/blob/main/queries/guide-suggestions.md)
 
 
 ### # journal format:
