@@ -6,4 +6,4 @@ Day 1
 
 Day 2
 - [1. git commands.md](https://github.com/b1tranger/learning-linux/blob/main/Linux/Day%202/1.%20git%20commands.md)
-- [2. best practices.md](https://github.com/b1tranger/learning-linux/blob/main/Linux/Day%202/2.%20best%20practices.md)
+- [2. best practices.md](https://github.com/b1tranger/learning-linux/blob/main/Linux/Day%202/2.%20best%20practices.md) | apt update, apt autoremove, ...
