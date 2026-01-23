@@ -3,7 +3,8 @@
 
 ### # purpose
 - to reach "Arch by the way" status one day
-- Linux CLI
+- Distro Jump Plan: Ubuntu &#40;&gt; Kali&#41; &gt; Fedora &gt; Arch
+- Linux CLI 
 - Termux for Android
 - Career: CyberSec, Server Admin
 
