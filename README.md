@@ -32,7 +32,7 @@ see index: [repo/.md](https://github.com/b1tranger/learning-linux/blob/main/quer
 
 
 ### # journal format:
-see [journal](https://github.com/b1tranger/learning-linux/tree/main/Linux)
+see [journal index](https://github.com/b1tranger/learning-linux/blob/main/Linux/index.md)
 ```
 > using Ubuntu
 
