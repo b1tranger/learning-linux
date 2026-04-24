@@ -10,3 +10,7 @@ the game will end the right way when he exits through the final gate.
 
 #mechanics:
 
+- walking to people prompts "talk" and the player starts a QnA minigame. answering the right questions to the right person gives the "key"
+- after you have the "key" and exit will open
+- character animation, QnA dashboard
+- 3 scenes: outside tavern, inside tavern, game end screen ("Still sad" or "You are now happy")
