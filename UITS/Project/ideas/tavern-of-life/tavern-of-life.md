@@ -1,0 +1,12 @@
+#Story:
+
+a sad man enters a tavern of life. here no man leaves without realizing something.
+
+he has to look for a "key", supposedly his meaning of life that will make him not sad anymore. He has to talk to people around the tavern, look for clues and find the right person and answer their questions correctly to be directed to the final exit. 
+
+if he proceeds to exit from the entry gate, an old man will say "Young man, if you get out from where you got in being sad, you will remain sad. Consider looking around a bit more." if he chooses to exit anyway, the game will end. Otherwise it will continue.
+
+the game will end the right way when he exits through the final gate.
+
+#mechanics:
+
