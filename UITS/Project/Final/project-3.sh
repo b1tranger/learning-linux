@@ -49,7 +49,6 @@ trap close_game SIGINT SIGTERM
 show_dialogue() {
     # $1 = title, $2 = message body
     whiptail --title "$1" --msgbox "$2" 12 55
-    tput civis  # Re-hide cursor after whiptail restores it
     draw_map 
     draw_all
 }
@@ -57,9 +56,7 @@ show_dialogue() {
 ask_yesno() {
     # $1 = title, $2 = question. Returns 0 for Yes, 1 for No.
     whiptail --title "$1" --yesno "$2" 10 55
-    local result=$?
-    tput civis  # Re-hide cursor after whiptail restores it
-    return $result
+    return $?
 }
 
 # =============================================================
@@ -444,11 +441,6 @@ tput cup $((HEIGHT / 2 + 1)) $((WIDTH / 4))
 echo "Entering the Tavern of Life..."
 sleep 2
 
-# Story Briefing Screen
-whiptail --title "Tavern of Life" --msgbox \
-"A sad man enters a tavern of life.\n\nHere, no man leaves without realizing something." 10 55
-tput civis
-
 # Initial Draw
 draw_map
 draw_all
@@ -484,28 +476,14 @@ while true; do
         esac
     fi
 
-    # 1. Logic: Check for Interaction at Entry Gate
+    # --- Area Triggers ---
     if [[ $x -le 2 && $y -eq $SPAWN_Y ]]; then
-        if whiptail --title "The Old Man" --yesno "Young man, if you get out from where you got in being sad, you will remain sad. Exit anyway?" 10 60; then
-            tput cnorm; stty echo; clear; echo "You left the tavern, still sad. The cycle continues."; exit 0
-        else
-            tput civis
-            x=3
-            draw_map
-            draw_all
-        fi
+        if whiptail --title "The Void" --yesno "Return to the outside?" 10 60; then close_game; else clear_footprints; x=3; draw_map; draw_all; fi
     fi
 
-    # 2. Logic: Win Condition at Final Exit
     if [[ $x -ge $((EXIT_X-1)) && $x -le $((EXIT_X+3)) && $y -ge $((EXIT_Y-1)) && $y -le $((EXIT_Y+1)) ]]; then
-        if [ "$has_realization" = true ]; then
-            tput cnorm; stty echo; clear; echo "You step out into the light, finally at peace. YOU WIN!"; exit 0
-        else
-            show_dialogue "Old Man" "The door is locked. You haven't found the 'key' to your meaning of life yet."
-            x=$((EXIT_X - 5))
-            draw_map
-            draw_all
-        fi
+        if [ "$has_realization" = true ]; then tput cnorm; stty echo; clear; echo "YOU WIN! You have exited the Tavern of Life."; exit 0; 
+        else show_dialogue "System" "The door is locked."; clear_footprints; x=$((EXIT_X - 5)); draw_map; draw_all; fi
     fi
 
     # Update drawing every few idle frames for NPC animations
