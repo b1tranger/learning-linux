@@ -30,7 +30,6 @@ BARTENDER_STATE=0
 PATRON_STATE=0
 DRUNK_STATE=0
 OLDMAN_STATE=0
-KEY_STAGE=0
 
 # --- Terminal Settings ---
 stty -echo
@@ -193,8 +192,8 @@ draw_player() {
 }
 
 draw_bartender() {
-    local bx=${1:-$BARTENDER_X}
-    local by=${2:-$BARTENDER_Y}
+    local bx=$BARTENDER_X
+    local by=$BARTENDER_Y
     tput setaf 6
     # Row 0: Head with bandana
     tput cup $by $bx;       echo -n " ≡▓≡ "
@@ -210,8 +209,8 @@ draw_bartender() {
 }
 
 draw_patron() {
-    local px=${1:-$PATRON_X}
-    local py=${2:-$PATRON_Y}
+    local px=$PATRON_X
+    local py=$PATRON_Y
     tput setaf 5
     # Row 0: Head
     tput cup $py $px;       echo -n "  ◉  "
@@ -229,8 +228,8 @@ draw_patron() {
 }
 
 draw_drunk() {
-    local dx=${1:-$DRUNK_X}
-    local dy=${2:-$DRUNK_Y}
+    local dx=$DRUNK_X
+    local dy=$DRUNK_Y
     tput setaf 1
     # Clear previous sway position to avoid ghost artifacts
     tput cup $dy $((dx-1));     echo -n "      "
@@ -259,8 +258,8 @@ draw_drunk() {
 }
 
 draw_oldman() {
-    local ox=${1:-$OLDMAN_X}
-    local oy=${2:-$OLDMAN_Y}
+    local ox=$OLDMAN_X
+    local oy=$OLDMAN_Y
     tput setaf 7
     # Row 0: Bald head
     tput cup $oy $ox;       echo -n "  █  "
@@ -281,23 +280,6 @@ draw_oldman() {
     tput sgr0
 }
 
-# --- Legend Drawing ---
-draw_legend() {
-    # Draw characters and roles on the right side of the screen
-    local lx=63
-    draw_bartender $lx 2
-    tput cup 3 $((lx+8)); tput setaf 6; echo -n "Bartender"; tput sgr0
-    
-    draw_patron $lx 6
-    tput cup 7 $((lx+8)); tput setaf 5; echo -n "Sober Patron"; tput sgr0
-    
-    draw_drunk $lx 10
-    tput cup 11 $((lx+8)); tput setaf 1; echo -n "Drunk Patron"; tput sgr0
-    
-    draw_oldman $lx 15
-    tput cup 16 $((lx+8)); tput setaf 7; echo -n "Old Man"; tput sgr0
-}
-
 # --- Draw All ---
 draw_all() {
     draw_bartender
@@ -305,7 +287,6 @@ draw_all() {
     draw_drunk
     draw_oldman
     draw_player
-    draw_legend
 }
 
 # --- Clear player footprints (4 rows now) ---
@@ -322,27 +303,37 @@ check_talk() {
 
     # --- Bartender ---
     if [[ $(( (x-BARTENDER_X)*(x-BARTENDER_X) + (y-BARTENDER_Y)*(y-BARTENDER_Y) )) -le 36 ]]; then
-        if [[ $KEY_STAGE -lt 3 ]]; then
-            show_dialogue "Bartender" "Welcome to the Tavern of Life! Speak with the patrons before coming to me."
-        elif [[ $KEY_STAGE -eq 3 ]]; then
-            if [[ $BARTENDER_STATE -eq 0 || $BARTENDER_STATE -eq 1 ]]; then
-                show_dialogue "Bartender" "You've spoken with everyone. I have the final key."
-                BARTENDER_STATE=1
-                if ask_yesno "Bartender" "Got a moment? I could use someone to talk to."; then
-                    local pairs=()
-                    for ((i=0; i<${#BARTENDER_Q[@]}; i++)); do
-                        pairs+=("${BARTENDER_Q[$i]}" "${BARTENDER_A[$i]}")
-                    done
-                    run_qna "Bartender" "${pairs[@]}"
-                    if [[ $? -eq 0 ]]; then
-                        BARTENDER_STATE=2
-                        KEY_STAGE=4
-                        has_realization=true
-                        show_dialogue "System" "🔑 The Bartender slides you the Final Key. \"You've earned your way out.\""
-                    fi
+        if [[ $BARTENDER_STATE -eq 0 ]]; then
+            # First interaction: intro dialogue
+            show_dialogue "Bartender" "Welcome to the Tavern of Life! Drink up, but don't mind the drunk over there."
+            BARTENDER_STATE=1
+            # Offer to continue conversation
+            if ask_yesno "Bartender" "Got a moment? I could use someone to talk to."; then
+                # Build pairs array: Q1 A1 Q2 A2 ...
+                local pairs=()
+                for ((i=0; i<${#BARTENDER_Q[@]}; i++)); do
+                    pairs+=("${BARTENDER_Q[$i]}" "${BARTENDER_A[$i]}")
+                done
+                run_qna "Bartender" "${pairs[@]}"
+                if [[ $? -eq 0 ]]; then
+                    BARTENDER_STATE=2
+                    has_realization=true
+                    show_dialogue "System" "🔑 The Bartender slides you a key. \"You've earned your way out.\""
                 fi
-            else
-                show_dialogue "Bartender" "You already have the key. Go on now, the exit awaits."
+            fi
+        elif [[ $BARTENDER_STATE -eq 1 ]]; then
+            # Talked before but didn't finish QnA
+            if ask_yesno "Bartender" "Ready to pick up where we left off?"; then
+                local pairs=()
+                for ((i=0; i<${#BARTENDER_Q[@]}; i++)); do
+                    pairs+=("${BARTENDER_Q[$i]}" "${BARTENDER_A[$i]}")
+                done
+                run_qna "Bartender" "${pairs[@]}"
+                if [[ $? -eq 0 ]]; then
+                    BARTENDER_STATE=2
+                    has_realization=true
+                    show_dialogue "System" "🔑 The Bartender slides you a key. \"You've earned your way out.\""
+                fi
             fi
         else
             show_dialogue "Bartender" "You already have the key. Go on now, the exit awaits."
@@ -351,24 +342,25 @@ check_talk() {
 
     # --- Sober Patron ---
     elif [[ $(( (x-PATRON_X)*(x-PATRON_X) + (y-PATRON_Y)*(y-PATRON_Y) )) -le 25 ]]; then
-        if [[ $KEY_STAGE -eq 0 ]]; then
-            if [[ $PATRON_STATE -eq 0 || $PATRON_STATE -eq 1 ]]; then
-                if [[ $PATRON_STATE -eq 0 ]]; then
-                    show_dialogue "Patron" "...Don't look at me like that. I chose to sit here."
-                    PATRON_STATE=1
-                fi
-                if ask_yesno "Patron" "Mind if I ask you something?"; then
-                    local pairs=()
-                    for ((i=0; i<${#PATRON_Q[@]}; i++)); do
-                        pairs+=("${PATRON_Q[$i]}" "${PATRON_A[$i]}")
-                    done
-                    run_qna "Patron" "${pairs[@]}"
-                    if [[ $? -eq 0 ]]; then 
-                        PATRON_STATE=2
-                        KEY_STAGE=1
-                        show_dialogue "System" "🔑 You received Key 1 from the Sober Patron."
-                    fi
-                fi
+        if [[ $PATRON_STATE -eq 0 ]]; then
+            show_dialogue "Patron" "...Don't look at me like that. I chose to sit here."
+            PATRON_STATE=1
+            if ask_yesno "Patron" "Mind if I ask you something?"; then
+                local pairs=()
+                for ((i=0; i<${#PATRON_Q[@]}; i++)); do
+                    pairs+=("${PATRON_Q[$i]}" "${PATRON_A[$i]}")
+                done
+                run_qna "Patron" "${pairs[@]}"
+                if [[ $? -eq 0 ]]; then PATRON_STATE=2; fi
+            fi
+        elif [[ $PATRON_STATE -eq 1 ]]; then
+            if ask_yesno "Patron" "You again. Got a question this time?"; then
+                local pairs=()
+                for ((i=0; i<${#PATRON_Q[@]}; i++)); do
+                    pairs+=("${PATRON_Q[$i]}" "${PATRON_A[$i]}")
+                done
+                run_qna "Patron" "${pairs[@]}"
+                if [[ $? -eq 0 ]]; then PATRON_STATE=2; fi
             fi
         else
             show_dialogue "Patron" "*stares into the distance*"
@@ -377,26 +369,25 @@ check_talk() {
 
     # --- Drunk Patron ---
     elif [[ $(( (x-DRUNK_X)*(x-DRUNK_X) + (y-DRUNK_Y)*(y-DRUNK_Y) )) -le 25 ]]; then
-        if [[ $KEY_STAGE -lt 1 ]]; then
-            show_dialogue "Drunk Patron" "*hic* Talk to my sober friend over there first..."
-        elif [[ $KEY_STAGE -eq 1 ]]; then
-            if [[ $DRUNK_STATE -eq 0 || $DRUNK_STATE -eq 1 ]]; then
-                if [[ $DRUNK_STATE -eq 0 ]]; then
-                    show_dialogue "Drunk Patron" "*hic* Hey! Are you... passing my line? Get back! *hic*"
-                    DRUNK_STATE=1
-                fi
-                if ask_yesno "Drunk Patron" "*hic* ...You still here? Fine. Ask me something."; then
-                    local pairs=()
-                    for ((i=0; i<${#DRUNK_Q[@]}; i++)); do
-                        pairs+=("${DRUNK_Q[$i]}" "${DRUNK_A[$i]}")
-                    done
-                    run_qna "Drunk Patron" "${pairs[@]}"
-                    if [[ $? -eq 0 ]]; then 
-                        DRUNK_STATE=2
-                        KEY_STAGE=2
-                        show_dialogue "System" "🔑 You received Key 2 from the Drunk Patron."
-                    fi
-                fi
+        if [[ $DRUNK_STATE -eq 0 ]]; then
+            show_dialogue "Drunk Patron" "*hic* Hey! Are you... are you passing my line? Get back! *hic*"
+            DRUNK_STATE=1
+            if ask_yesno "Drunk Patron" "*hic* ...You still here? Fine. Ask me something."; then
+                local pairs=()
+                for ((i=0; i<${#DRUNK_Q[@]}; i++)); do
+                    pairs+=("${DRUNK_Q[$i]}" "${DRUNK_A[$i]}")
+                done
+                run_qna "Drunk Patron" "${pairs[@]}"
+                if [[ $? -eq 0 ]]; then DRUNK_STATE=2; fi
+            fi
+        elif [[ $DRUNK_STATE -eq 1 ]]; then
+            if ask_yesno "Drunk Patron" "*hic* Back again? One more question, just one..."; then
+                local pairs=()
+                for ((i=0; i<${#DRUNK_Q[@]}; i++)); do
+                    pairs+=("${DRUNK_Q[$i]}" "${DRUNK_A[$i]}")
+                done
+                run_qna "Drunk Patron" "${pairs[@]}"
+                if [[ $? -eq 0 ]]; then DRUNK_STATE=2; fi
             fi
         else
             show_dialogue "Drunk Patron" "*hic* ...zzz..."
@@ -405,29 +396,26 @@ check_talk() {
 
     # --- Old Man ---
     elif [[ $(( (x-OLDMAN_X)*(x-OLDMAN_X) + (y-OLDMAN_Y)*(y-OLDMAN_Y) )) -le 25 ]]; then
-        if [[ $KEY_STAGE -lt 2 ]]; then
-            show_dialogue "Old Man" "You lack the wisdom of the patrons. Seek them first."
-        elif [[ $KEY_STAGE -eq 2 ]]; then
-            if [[ $OLDMAN_STATE -eq 0 || $OLDMAN_STATE -eq 1 ]]; then
-                if [[ $OLDMAN_STATE -eq 0 ]]; then
-                    show_dialogue "Old Man" "The exit is near, but are you truly ready to leave?"
-                    OLDMAN_STATE=1
-                fi
-                if ask_yesno "Old Man" "One question. That's all I'll give you."; then
-                    local pairs=()
-                    for ((i=0; i<${#OLDMAN_Q[@]}; i++)); do
-                        pairs+=("${OLDMAN_Q[$i]}" "${OLDMAN_A[$i]}")
-                    done
-                    run_qna "Old Man" "${pairs[@]}"
-                    if [[ $? -eq 0 ]]; then 
-                        OLDMAN_STATE=2
-                        KEY_STAGE=3
-                        show_dialogue "System" "🔑 You received Key 3 from the Old Man."
-                    fi
-                fi
+        if [[ $OLDMAN_STATE -eq 0 ]]; then
+            show_dialogue "Old Man" "The exit is near, but are you truly ready to leave?"
+            OLDMAN_STATE=1
+            if ask_yesno "Old Man" "One question. That's all I'll give you."; then
+                local pairs=()
+                for ((i=0; i<${#OLDMAN_Q[@]}; i++)); do
+                    pairs+=("${OLDMAN_Q[$i]}" "${OLDMAN_A[$i]}")
+                done
+                run_qna "Old Man" "${pairs[@]}"
+                if [[ $? -eq 0 ]]; then OLDMAN_STATE=2; fi
             fi
-        elif [[ $KEY_STAGE -ge 4 || $has_realization == true ]]; then
-            show_dialogue "Old Man" "Ah, you found the final key. A reward for clearing the game:\n\n'The road is long, the night is dark...\nBut every soul must leave a mark.'\n\nFarewell."
+        elif [[ $OLDMAN_STATE -eq 1 ]]; then
+            if ask_yesno "Old Man" "...Fine. Ask."; then
+                local pairs=()
+                for ((i=0; i<${#OLDMAN_Q[@]}; i++)); do
+                    pairs+=("${OLDMAN_Q[$i]}" "${OLDMAN_A[$i]}")
+                done
+                run_qna "Old Man" "${pairs[@]}"
+                if [[ $? -eq 0 ]]; then OLDMAN_STATE=2; fi
+            fi
         else
             show_dialogue "Old Man" "*nods quietly toward the exit*"
         fi
@@ -486,10 +474,10 @@ while true; do
         fi
 
         case $input in
-            "[A"|w) [[ $y -gt 1 ]] && ((y=y-2)) && ((frame++)) ;;
-            "[B"|s) [[ $y -lt $((HEIGHT-4)) ]] && ((y=y+2)) && ((frame++)) ;;
-            "[C"|d) [[ $x -lt $((WIDTH-5)) ]] && ((x=x+2)) && ((frame++)) ;;
-            "[D"|a) [[ $x -gt 1 ]] && ((x=x-2)) && ((frame++)) ;;
+            "[A"|w) [[ $y -gt 1 ]] && ((y--)) && ((frame++)) ;;
+            "[B"|s) [[ $y -lt $((HEIGHT-4)) ]] && ((y++)) && ((frame++)) ;;
+            "[C"|d) [[ $x -lt $((WIDTH-5)) ]] && ((x++)) && ((frame++)) ;;
+            "[D"|a) [[ $x -gt 1 ]] && ((x--)) && ((frame++)) ;;
             t) check_talk ;;
             q) close_game ;;
             k) has_realization=true; show_dialogue "System" "🔑 Key Obtained!" ;; 
