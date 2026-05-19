@@ -16,23 +16,21 @@ idle_frame=0
 has_realization=false
 
 # NPC Coordinates
-# Bartender (leftmost, behind the counter so players meet him first)
+
 BARTENDER_X=18; BARTENDER_Y=2
-# Sober Patron (sitting at a chair, right side of counter with a table gap)
 PATRON_X=34; PATRON_Y=6
-# Drunk Patron (sitting next to sober patron, further right)
 DRUNK_X=42; DRUNK_Y=6
-# Old Man (near the exit door)
 OLDMAN_X=52; OLDMAN_Y=14
 
-# Conversation tracking (0 = not talked, 1 = intro done, 2 = QnA done)
+# Conversation tracking 
+# (0 = not talked, 1 = intro done, 2 = QnA done)
 BARTENDER_STATE=0
 PATRON_STATE=0
 DRUNK_STATE=0
 OLDMAN_STATE=0
 KEY_STAGE=0
 
-# --- Terminal Settings ---
+
 stty -echo
 tput civis
 
@@ -45,7 +43,6 @@ close_game() {
 }
 trap close_game SIGINT SIGTERM
 
-# --- Dialogue Helpers ---
 
 show_dialogue() {
     # $1 = title, $2 = message body
@@ -63,13 +60,13 @@ ask_yesno() {
     return $result
 }
 
-# =============================================================
+
 # QnA CONVERSATION SYSTEM
 # Each NPC has an array of questions and corresponding answers.
 # To add more questions, simply append to the arrays below.
 # Format: QUESTIONS[index]="Question text"
 #         ANSWERS[index]="Answer text"
-# =============================================================
+
 
 # --- Bartender QnA (3 questions) ---
 BARTENDER_Q=()
@@ -123,9 +120,9 @@ run_qna() {
     return 0  # All questions asked
 }
 
-# =============================================================
+
 # MAP DRAWING
-# =============================================================
+
 
 draw_map() {
     clear
@@ -163,9 +160,9 @@ draw_map() {
     echo -n "Use Arrows/WASD to move | 't' to Talk | 'q' to Quit"
 }
 
-# =============================================================
+
 # CHARACTER DRAWING (Detailed designs, 4 rows each)
-# =============================================================
+
 
 draw_player() {
     tput setaf 2
@@ -313,9 +310,9 @@ clear_footprints() {
     for i in {0..3}; do tput cup $((y+i)) $x; echo -n "     "; done
 }
 
-# =============================================================
+
 # CONVERSATION / TALK SYSTEM
-# =============================================================
+
 
 check_talk() {
     local talked=0
@@ -443,9 +440,9 @@ check_talk() {
     fi
 }
 
-# =============================================================
+
 # MAIN GAME LOOP
-# =============================================================
+
 
 # Loading Screen
 clear
