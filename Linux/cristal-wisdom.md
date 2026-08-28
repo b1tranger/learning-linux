@@ -1,0 +1,3 @@
+"hyprland + Wayland is very productive than windows ... arch is good, gentoo is overkill, fedora is something easy to get started" ~ When Alvi asked whether he should install Arch
+
+"anyway running alpine from phone will not let you run antigravity standalone ide ... because it is built with glibc ... alpine runs on musl" ~ When I asked about running Alpine linux for replacing Desktops or using Cloud Computing for university work in campus

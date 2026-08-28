@@ -1,10 +1,30 @@
-# # journal index
+# Linux Index
 
-Day 1
-- [1. Installing Flathub using flatpak command.md](https://github.com/b1tranger/learning-linux/blob/main/Linux/Day%201/1.%20Installing%20Flathub%20using%20flatpak%20command.md)
-- [2. Setting up code environment - IDE, git.md](https://github.com/b1tranger/learning-linux/blob/main/Linux/Day%201/2.%20Setting%20up%20code%20environment%20-%20IDE%2C%20git.md)
+[🏠 Root](../README.md) / **Linux**
 
-Day 2
-- [1. git commands.md](https://github.com/b1tranger/learning-linux/blob/main/Linux/Day%202/1.%20git%20commands.md)
-- [2. best practices.md](https://github.com/b1tranger/learning-linux/blob/main/Linux/Day%202/2.%20best%20practices.md) | apt update, apt autoremove, ...
-- [3. Softwares to install [D3].md](https://github.com/b1tranger/learning-linux/blob/main/Linux/Day%202/3.%20Softwares%20to%20install%20%5BD3%5D.md)
+---
+
+### 🌳 Directory Structure
+
+```text
+Linux/
+├── Alpine_Android/      # Alpine Linux on Android (Acode IDE setup & configs)
+│   └── doc/             # C++, Git, and Python guides for Acode
+├── Diary/               # Daily learning journal & notes
+│   ├── Day 1/
+│   └── Day 2/
+├── Kali_VMware/         # Kali Linux VM guides & configs
+├── ai-linux-roadmap.md  # Roadmap for learning Linux
+└── cristal-wisdom.md    # Advice & suggestions from peers
+```
+
+---
+
+### 📂 Subdirectories
+- [📁 Alpine_Android](./Alpine_Android/index.md) — Guides and configs for running Alpine Linux / Acode on Android
+- [📁 Diary](./Diary/index.md) — Daily journal entries, setups, and conclusions
+- [📁 Kali_VMware](./Kali_VMware/index.md) — VMware setup guides and Antigravity package management
+
+### 📄 Root Linux Notes
+- [ai-linux-roadmap.md](./ai-linux-roadmap.md) — AI-assisted Linux mastery roadmap
+- [cristal-wisdom.md](./cristal-wisdom.md) — Guidance and notes from Cristal
