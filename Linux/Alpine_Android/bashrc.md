@@ -1,5 +1,10 @@
-To update the file, remove the old content and use: cd [path to repo]
-cat ~/.bashrc >> Linux/Alpine_Android/bashrc.md
+
+<!-- 
+To update the file, remove the old content and use: 
+cd [path to repo] 
+cat ~/.bashrc >> Linux/Alpine_Android/bashrc.md 
+-->
+
 
 run() { 
 g++ "$1" -o /tmp/app && /tmp/app
